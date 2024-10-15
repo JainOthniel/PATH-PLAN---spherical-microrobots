@@ -41,7 +41,15 @@ class Parameters:
     def position_obstacle(self, value: np.ndarray) -> None:
         self._position_obstacle = value
         #self.position_array = update_position_array()
-        
+    
+    @property
+    def Force(self):
+        return self._Force
+    
+    @Force.setter    
+    def Force(self, value: np.ndarray) -> None:
+        self._Force = value    
+    
     @property
     def distance_cal(self) -> np.ndarray:
         return np.linalg.norm(self.position_array, ord=2, axis=1)
