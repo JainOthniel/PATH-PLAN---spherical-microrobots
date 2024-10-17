@@ -13,7 +13,7 @@ class Parameters:
     viscosity: float
     radius_robot: float
     radius_obstacle: float
-    force: np.ndarray
+    Force: np.ndarray
     position_robot: np.ndarray
     position_obstacle: np.ndarray
 
