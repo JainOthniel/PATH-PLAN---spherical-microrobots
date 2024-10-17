@@ -49,9 +49,10 @@ def main():
     
     a_d = 5
     a_o = 5
-    r_d = np.array([10, 50])
-    r_o = np.array([[20, 40], [40, 60], [60, 40], [80, 60], [100, 60], [120, 40], [150, 60], [190, 60]]) 
-    F = np.array([0.005,0])
+    r_d = np.array([10, 50,10])
+    r_o = np.array([[20, 40, 20], [40, 60, 10], [60, 40, 5], [80, 60, 20], [100, 60, 10], [120, 40, 5], [150, 60, 20], [190, 60, 10]]) 
+    # r_o = np.array([[20, 40, 20], [40, 60, 40], [60, 40], [80, 60], [100, 60], [120, 40], [150, 60], [190, 60]]) 
+    F = np.array([0.005,0,0])
     r = r_o - r_d 
     param = Parameters(viscosity=0.1, radius_robot=a_d, radius_obstacle=a_o, position_robot=r_d, position_obstacle=r_o, Force=F)
     s = 2 * param.distance_cal / (a_o + a_d)
@@ -62,9 +63,9 @@ def main():
     vel = velocity_robot(0 ,r_d, param, mob_fun)
     U_stokes = param.Force / (6 *np.pi *0.1* 5)
     U_robo_magn = np.linalg.norm(vel,ord=2,axis=0)
-    tspan = (0,3_00_000)
-    t_eval = np.arange(0,3_00_000,1)
-    traje = solve_ivp(velocity_robot, tspan, r_d, method='RK45', t_eval=t_eval, args=(param, mob_fun))
+    tspan = (0,6_00_000)
+    t_eval = np.arange(0,6_00_000,1)
+
     
     fig = plt.figure(figsize=(10, 8))
     ax = fig.add_subplot(111, projection='3d')
